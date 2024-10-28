@@ -54,8 +54,9 @@ body,
 		flex-direction: column;
 		flex: 1;
 	}
+	// 侧边栏颜色修改,我终于找到了啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊!!!!!!
 	.layout-aside {
-		background: var(--next-bg-menuBar);
+	background: linear-gradient(to bottom, #43cbc0, rgba(67, 164, 154, 0.479), #80cbc3cd, #D0Ebea) !important;
 		box-shadow: 2px 0 6px rgba(0, 41, 21, 0.01);
 		height: inherit;
 		position: relative;
@@ -79,11 +80,13 @@ body,
 		display: flex;
 		flex-direction: column;
 		// 内层 el-scrollbar样式，用于界面高度自适应（main.vue）
+		//页面背景颜色
 		.layout-main-scroll {
 			@extend .layout-flex;
 			.layout-parent {
 				@extend .layout-flex;
 				position: relative;
+				background: linear-gradient(to bottom, #E0f2f1, #D0Ebea);
 			}
 		}
 	}

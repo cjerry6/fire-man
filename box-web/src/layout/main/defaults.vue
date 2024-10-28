@@ -1,3 +1,4 @@
+<!-- 侧边栏背景颜色 -->
 <template>
 	<el-container class="layout-container">
 		<LayoutAside />

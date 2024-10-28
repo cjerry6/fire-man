@@ -97,11 +97,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+//顶栏颜色修改
 .layout-navbars-breadcrumb-index {
 	height: 50px;
 	display: flex;
 	align-items: center;
-	background: var(--next-bg-topBar);
+	// background: var(--next-bg-topBar);
 	border-bottom: 1px solid var(--next-border-color-light);
+	// background: #51bfb6;
+	background: linear-gradient(to right, #43cbc0, rgba(96, 225, 213, 0.479), #80cbc3cd, #D0Ebea) !important;
 }
 </style>
