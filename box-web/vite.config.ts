@@ -28,8 +28,8 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			open: JSON.parse(env.VITE_OPEN),
 			hmr: true,
 			proxy: {
-				'/manageApi': {
-					target: 'http://47.100.198.147:20004/manage/',
+				'/api': {
+					target: 'http://fyan2d.natappfree.cc',
 					ws: true,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/manageApi/, ''),

@@ -6,21 +6,27 @@ import request from '/@/utils/request';
  * 登录api接口集合
  * @method signIn 用户登录
  * @method signOut 用户退出登录
+ * interface data <T=any> {
+				account:string;
+				password:string;
+			}
  */
 export function useLoginApi() {
 	return {
 		signIn: (data: object) => {
 			return request({
-				url: '/sso/login',
+				url: '/user/login',
 				method: 'post',
-				data,
+				data: {
+					username: data.account,
+					password: data.password,
+				},
 			});
 		},
-		signOut: (data: object) => {
+		signOut: () => {
 			return request({
-				url: '/sso/logout',
+				url: '/user/logout',
 				method: 'get',
-				data,
 			});
 		},
 	};
