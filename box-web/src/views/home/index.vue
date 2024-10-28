@@ -16,7 +16,7 @@
         <el-input
             v-model="state.inputSearch"
             style="max-width: 600px"
-            placeholder="随时创造你想要的！"
+            placeholder="搜索最近火灾状况"
             class="input-with-select"
             size="large"
         >
@@ -44,7 +44,7 @@ const { themeConfig } = storeToRefs(storesThemeConfig);
 const { isTagsViewCurrenFull } = storeToRefs(storesTagsViewRoutes);
 const state = reactive({
   inputSearch: '',
-  url: 'http://47.100.198.147:7791/picture/logo.png'
+  url: 'https://pic.imgdb.cn/item/671f90ded29ded1a8c4aa826.png'
 });
 
 // 页面加载时
