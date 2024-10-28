@@ -1,7 +1,8 @@
 <template>
+	<!-- 侧边栏logo -->
 	<div class="layout-logo" v-if="setShowLogo" @click="onThemeConfigChange">
 		<img :src="logoMini" class="layout-logo-medium-img" />
-		<span>{{ themeConfig.globalTitle }}</span>
+		<!-- <span>{{ themeConfig.globalTitle }}</span> -->
 	</div>
 	<div class="layout-logo-size" v-else @click="onThemeConfigChange">
 		<img :src="logoMini" class="layout-logo-size-img" />
@@ -33,7 +34,7 @@ const onThemeConfigChange = () => {
 <style scoped lang="scss">
 .layout-logo {
 	width: 220px;
-	height: 50px;
+	height: 80px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -52,7 +53,8 @@ const onThemeConfigChange = () => {
 		}
 	}
 	&-medium-img {
-		width: 20px;
+		width: 120px;
+		height: auto;
 		margin-right: 5px;
 	}
 }

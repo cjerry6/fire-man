@@ -1,3 +1,4 @@
+<!-- 侧边栏代码区 -->
 <template>
 	<div class="h100" v-show="!isTagsViewCurrenFull">
 		<el-aside class="layout-aside" :class="setCollapseStyle">
@@ -37,7 +38,7 @@ const state = reactive<AsideState>({
 // 设置菜单展开/收起时的宽度
 const setCollapseStyle = computed(() => {
 	const { layout, isCollapse, menuBar } = themeConfig.value;
-	const asideBrTheme = ['#FFFFFF', '#FFF', '#fff', '#ffffff'];
+	const asideBrTheme = ['#008000', '#00FF00', '#80FF80', '#FFFFFF'];
 	const asideBrColor = asideBrTheme.includes(menuBar) ? 'layout-el-aside-br-color' : '';
 	// 判断是否是手机端
 	if (state.clientWidth <= 1000) {
@@ -156,3 +157,8 @@ watch(
 	}
 );
 </script>
+<style scoped>
+.setCollapseStyle {
+	background: linear-gradient(to bottom, #008000, #00FF00, #80FF80, #FFFFFF);
+}
+</style>

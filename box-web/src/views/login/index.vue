@@ -1,24 +1,24 @@
 <template>
 	<div class="login-container flex">
-		<div class="login-left">
+		<div class="login-left" style="background: none;">
 			<div class="login-left-logo">
 				<img :src="logoMini" />
-				<div class="login-left-logo-text">
+				<!-- <div class="login-left-logo-text">
 					<span>{{ getThemeConfig.globalViceTitle }}</span>
 					<span class="login-left-logo-text-msg">{{ getThemeConfig.globalViceTitleMsg }}</span>
-				</div>
+				</div> -->
 			</div>
-			<div class="login-left-img">
+			<!-- <div class="login-left-img">
 				<img :src="loginMain" />
 			</div>
-			<img :src="loginBg" class="login-left-waves" />
+			<img :src="loginBg" class="login-left-waves" /> -->
 		</div>
 		<div class="login-right flex">
 			<div class="login-right-warp flex-margin">
-				<span class="login-right-warp-one"></span>
-				<span class="login-right-warp-two"></span>
-				<div class="login-right-warp-mian">
-					<div class="login-right-warp-main-title">{{ getThemeConfig.globalTitle }} 欢迎您！</div>
+				<!-- <span class="login-right-warp-one"></span> -->
+				<!-- <span class="login-right-warp-two"></span> -->
+				<div class="login-right-warp-mian shadow">
+					<div class="login-right-warp-main-title">FDSystem综合火灾检测系统</div>
 					<div class="login-right-warp-main-form">
 						<div v-if="!state.isScan">
 							<el-tabs v-model="state.tabsActiveName">
@@ -77,7 +77,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .login-container {
 	height: 100%;
-	background: var(--el-color-white);
+    background-image: url(./a.png); background-size: cover; background-position: center;
 	.login-left {
 		flex: 1;
 		position: relative;
@@ -92,8 +92,8 @@ onMounted(() => {
 			z-index: 1;
 			animation: logoAnimation 0.3s ease;
 			img {
-				width: 52px;
-				height: 52px;
+				height: 100px;
+				width: auto;
 			}
 			.login-left-logo-text {
 				display: flex;
@@ -250,5 +250,16 @@ onMounted(() => {
 			}
 		}
 	}
+}
+//yinying
+.shadow {
+	/* 初始状态下的样式，可以添加其他样式属性 */
+	transition: box - shadow 0.4s ease;
+	/* 为box - shadow属性添加过渡效果，持续时间0.4秒，缓动函数为ease */
+}
+
+.shadow:hover {
+	box-shadow: 0 4px 81px rgba(0, 0, 0, 1);
+	/* 鼠标悬停时的阴影样式，这里阴影垂直偏移4px、模糊半径8px、颜色为半透明黑色 */
 }
 </style>

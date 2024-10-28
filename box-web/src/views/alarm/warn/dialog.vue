@@ -106,11 +106,11 @@
           <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="mb20">
             <el-form-item label="帐号状态" prop="status">
               <el-switch v-model="state.ruleForm.status"
-                         active-value=1
-                         inactive-value=0
-                         inline-prompt
-                         active-text="是"
-                         inactive-text="否"></el-switch>
+                        active-value=1
+                        inactive-value=0
+                        inline-prompt
+                        active-text="是"
+                        inactive-text="否"></el-switch>
             </el-form-item>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" class="mb20">

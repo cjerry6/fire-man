@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+//顶栏颜色配置
 
 /**
  * 布局配置
