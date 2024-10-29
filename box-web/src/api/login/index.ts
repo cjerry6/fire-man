@@ -13,7 +13,7 @@ import request from '/@/utils/request';
  */
 export function useLoginApi() {
 	return {
-		signIn: (data: object) => {
+		signIn: (data: any) => {
 			return request({
 				url: '/user/login',
 				method: 'post',

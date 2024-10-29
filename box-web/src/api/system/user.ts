@@ -7,33 +7,33 @@ export function useUserApi() {
 	return {
 		getUserInfo: () => {
 			return request({
-				url: '/sso/getInfo',
+				url: '/user/getinfo',
 				method: 'get',
 			});
 		},
-		// 查询用户列表
-		getPageList(data: object) {
-			return request({
-				url: '/user/getPageList',
-				method: 'post',
-				data: data,
-			});
-		},
-		// 查询用户详细
-		getUserById(id: number) {
-			return request({
-				url: '/user/' + id,
-				method: 'get',
-			});
-		},
-		// 新增用户
-		createUser(data: object) {
-			return request({
-				url: '/user/createUser',
-				method: 'post',
-				data: data,
-			});
-		},
+		// // 查询用户列表
+		// getPageList(data: object) {
+		// 	return request({
+		// 		url: '/user/getPageList',
+		// 		method: 'post',
+		// 		data: data,
+		// 	});
+		// },
+		// // 查询用户详细
+		// getUserById(id: number) {
+		// 	return request({
+		// 		url: '/user/' + id,
+		// 		method: 'get',
+		// 	});
+		// },
+		// // 新增用户
+		// createUser(data: object) {
+		// 	return request({
+		// 		url: '/user/createUser',
+		// 		method: 'post',
+		// 		data: data,
+		// 	});
+		// },
 		updateUser(data: object) {
 			return request({
 				url: '/user/updateUser',
