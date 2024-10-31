@@ -1,7 +1,7 @@
 <template>
   <div class="layout-pd">
     <!-- 中部LOGO -->
-    <el-row justify="center" >
+    <el-row justify="center">
       <el-col :span="8"></el-col>
       <el-col :span="8" justify="center">
         <el-image style="height:300px; display: block; margin: auto;" :src="state.url" fit="contain" />
@@ -13,17 +13,24 @@
       <el-col :span="8"></el-col>
       <el-col :span="8" style="height:300px; display: block; margin: auto;">
         <!-- 搜索框 -->
-        <el-input
-            v-model="state.inputSearch"
-            style="max-width: 600px"
-            placeholder="搜索最近火灾状况"
-            class="input-with-select"
-            size="large"
-        >
+        <el-input v-model="state.inputSearch" style="max-width: 600px" placeholder="搜索最近火灾状况" class="input-with-select"
+          size="large">
           <template #append>
-            <el-button :icon="Search"/>
+            <el-button :icon="Search" />
           </template>
         </el-input>
+        <!-- 上传文件 -->
+        <el-upload class="upload-demo" list-type="picture" method="post" drag action="http://test-cn.your-api-server.com/api/talking/upload" multiple>
+          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+          <div class="el-upload__text">
+            拖动文件上传或 <em>点击文件上传</em>
+          </div>
+          <template #tip>
+            <div class="el-upload__tip">
+              jpg/png files with a size less than 500kb
+            </div>
+          </template>
+        </el-upload>
       </el-col>
       <el-col :span="8"></el-col>
     </el-row>
@@ -33,15 +40,9 @@
 <script setup lang="ts" name="home">
 import {Search} from '@element-plus/icons-vue';
 import { reactive, onMounted} from 'vue';
-import { storeToRefs } from 'pinia';
-import { useThemeConfig } from '/@/stores/themeConfig';
-import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
+import { UploadFilled } from '@element-plus/icons-vue'
 
 // 定义变量内容
-const storesTagsViewRoutes = useTagsViewRoutes();
-const storesThemeConfig = useThemeConfig();
-const { themeConfig } = storeToRefs(storesThemeConfig);
-const { isTagsViewCurrenFull } = storeToRefs(storesTagsViewRoutes);
 const state = reactive({
   inputSearch: '',
   url: 'https://pic.imgdb.cn/item/671f90ded29ded1a8c4aa826.png'
