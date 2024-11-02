@@ -20,7 +20,7 @@
           </template>
         </el-input>
         <!-- 上传文件 -->
-        <el-upload class="upload-demo" list-type="picture" method="post" drag action="http://test-cn.your-api-server.com/api/talking/upload" multiple>
+        <el-upload class="upload-demo" list-type="picture" method="post" action="/api/talking/upload" multiple drag>
           <el-icon class="el-icon--upload"><upload-filled /></el-icon>
           <div class="el-upload__text">
             拖动文件上传或 <em>点击文件上传</em>
@@ -38,8 +38,8 @@
 </template>
 
 <script setup lang="ts" name="home">
-import {Search} from '@element-plus/icons-vue';
-import { reactive, onMounted} from 'vue';
+import { Search } from '@element-plus/icons-vue';
+import { reactive, onMounted } from 'vue';
 import { UploadFilled } from '@element-plus/icons-vue'
 
 // 定义变量内容
@@ -59,9 +59,11 @@ onMounted(() => {
 .el-row {
   margin-top: 4em;
 }
+
 .el-row:last-child {
   margin-bottom: 0;
 }
+
 .el-col {
   border-radius: 4px;
 }
