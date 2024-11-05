@@ -89,6 +89,7 @@ service.interceptors.response.use(
 				return handleResult(JSON.parse(result.target!.result as string));
 			};
 		} else {
+			console.log(res);
 			return handleResult(res.data);
 		}
 	},
@@ -107,25 +108,27 @@ service.interceptors.response.use(
 
 function handleResult(data: any) {
 	// 未设置状态码则默认成功状态
-	const code = data.code || '0000';
+	const code = data.code || 200;
 	// 获取错误信息
 	const msg = data.msg || '账户或者密码错误,请联系say更改密码';
 
-	if (code === '1001' || code === '1002' || code === '1003') {
-		if (document.getElementsByClassName('el-overlay-message-box').length > 0) return false;
-		ElMessageBox.confirm('当前状态未登录，您可以继续留在该页面，或者前往登录', '系统提示', {
-			confirmButtonText: '前往登录',
-			cancelButtonText: '暂不登录',
-			type: 'warning',
-		})
-			.then(() => {
-				Session.clear(); // 清除浏览器全部临时缓存
-				window.location.href = '/'; // 去登录页
-			})
-			.catch(() => {
-				Session.clear(); // 清除浏览器全部临时缓存
-			});
-	} else if (code !== '0000') {
+	// if (code === '1001' || code === '1002' || code === '1003') {
+	// 	if (document.getElementsByClassName('el-overlay-message-box').length > 0) return false;
+	// 	ElMessageBox.confirm('当前状态未登录，您可以继续留在该页面，或者前往登录', '系统提示', {
+	// 		confirmButtonText: '前往登录',
+	// 		cancelButtonText: '暂不登录',
+	// 		type: 'warning',
+	// 	})
+	// 		.then(() => {
+	// 			Session.clear(); // 清除浏览器全部临时缓存
+	// 			window.location.href = '/'; // 去登录页
+	// 		})
+	// 		.catch(() => {
+	// 			Session.clear(); // 清除浏览器全部临时缓存
+	// 		});
+	// } else
+	if (code !== 200) {
+		console.log('code!==200');
 		ElMessage.error(msg);
 	} else {
 		return data.data === undefined ? data : data.data;
