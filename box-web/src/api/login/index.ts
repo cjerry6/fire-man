@@ -26,7 +26,7 @@ export function useLoginApi() {
 		signOut: () => {
 			return request({
 				url: '/user/logout',
-				method: 'get',
+				method: 'post',
 			});
 		},
 	};

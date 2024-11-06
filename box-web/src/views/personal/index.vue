@@ -1,5 +1,7 @@
 <template>
 	<div class="personal layout-pd">
+		<button @click="usershow()">我也是一个测试按钮</button>
+		<button @click="usermange('say', 'buildConfig')">一键让say编程building</button>
 		<el-row>
 			<!-- 个人信息 -->
 			<el-col :xs="24" :sm="16">
@@ -152,6 +154,22 @@ import { reactive, onMounted, ref, watch, onActivated } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
+import { usePersonalApi } from '/@/api/personal';
+
+// 网络请求
+const personalApi = usePersonalApi();
+//用户管理
+const usermange = async (username: string, user_type: string) => {
+	personalApi.personalUsermanage(username, user_type).then((res) => {
+		console.log(res);
+	});
+};
+//用户信息展示
+const usershow = async () => {
+	personalApi.personalUsershow().then((res) => {
+		console.log(res);
+	});
+};
 
 // 定义变量内容
 const storesTagsViewRoutes = useTagsViewRoutes();

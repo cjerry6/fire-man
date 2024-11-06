@@ -110,7 +110,7 @@ function handleResult(data: any) {
 	// 未设置状态码则默认成功状态
 	const code = data.code || 200;
 	// 获取错误信息
-	const msg = data.msg || '账户或者密码错误,请联系say更改密码';
+	const msg = data.error || '账户或者密码错误,请联系say更改密码';
 
 	// if (code === '1001' || code === '1002' || code === '1003') {
 	// 	if (document.getElementsByClassName('el-overlay-message-box').length > 0) return false;

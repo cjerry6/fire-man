@@ -1,5 +1,6 @@
 <template>
 	<div class="home-container layout-pd">
+		<button @click="notice">我是一个测试按钮</button>
 		<el-row :gutter="15" class="home-card-one mb15">
 			<el-col
 				:xs="24"
@@ -548,6 +549,12 @@ import { usePanelStore } from '/@/stores/alarm/panel';
 const panelApi = usePanelApi();
 const panelStore = usePanelStore();
 
+//通知
+const notice = async () => {
+	panelApi.panelNotice().then((res) => {
+		console.log('1', res);
+	});
+};
 //接受
 const accept = async () => {
 	panelApi.panelAccept().then((res) => {

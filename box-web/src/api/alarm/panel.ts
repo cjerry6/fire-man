@@ -9,5 +9,12 @@ export function usePanelApi() {
 				method: 'post',
 			});
 		},
+		//通知/api/talking/notice
+		panelNotice() {
+			return request({
+				url: '/talking/notice',
+				method: 'post',
+			});
+		},
 	};
 }
