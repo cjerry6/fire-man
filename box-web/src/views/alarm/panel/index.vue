@@ -559,7 +559,6 @@ const notice = async () => {
 const accept = async () => {
 	panelApi.panelAccept().then((res) => {
 		panelStore.setFireShow(res);
-		console.log('111', res);
 	});
 };
 </script>

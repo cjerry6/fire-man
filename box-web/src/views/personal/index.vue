@@ -1,7 +1,7 @@
 <template>
 	<div class="personal layout-pd">
 		<button @click="usershow()">我也是一个测试按钮</button>
-		<button @click="usermange('say', 'buildConfig')">一键让say编程building</button>
+		<button @click="usermange('say', 'building')">一键让say编程building</button>
 		<el-row>
 			<!-- 个人信息 -->
 			<el-col :xs="24" :sm="16">
