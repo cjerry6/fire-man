@@ -208,7 +208,7 @@ const onHandleCurrentChange = (val: number) => {
 };
 // 页面加载时
 onMounted(() => {
-	getTableData();
+	//getTableData();
 	show();
 });
 
