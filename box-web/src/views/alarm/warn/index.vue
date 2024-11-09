@@ -208,7 +208,7 @@ const onHandleCurrentChange = (val: number) => {
 };
 // 页面加载时
 onMounted(() => {
-	getTableData();
+	//getTableData();
 	show();
 });
 
@@ -223,6 +223,8 @@ const show = async () => {
 		// 		panelStore.setFireShow(res[i]);
 		// 	}
 		// }
+		console.log(res);
+		//state.tableData.records.values = res;
 	});
 };
 </script>

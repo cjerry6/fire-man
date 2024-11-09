@@ -13,7 +13,9 @@ export const usePanelStore = defineStore('panel', {
 			// 		// this.fireShow.push(data[i]);
 			// 	}
 			// }
-			this.fireShow.push(data);
+
+			this.fireShow = data;
+			console.log(this.fireShow);
 		},
 		deleteFireShow(id: number) {
 			this.fireShow.splice(id, 1);
