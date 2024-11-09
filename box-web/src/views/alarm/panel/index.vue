@@ -1,29 +1,28 @@
 <template>
-	<div class="home-container layout-pd">
-		<button @click="notice">我是一个测试按钮</button>
-		<el-row :gutter="15" class="home-card-one mb15">
-			<el-col
-				:xs="24"
-				:sm="12"
-				:md="12"
-				:lg="6"
-				:xl="6"
-				v-for="(v, k) in state.homeOne"
-				:key="k"
-				:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }"
-			>
-				<div class="home-card-item flex">
-					<div class="flex-margin flex w100" :class="` home-one-animation${k}`">
-						<div class="flex-auto">
-							<span class="font30">{{ v.fire_type }}</span>
-							<div class="mt10">{{ v.confidence }}</div>
-							<div class="mt10">{{ v.record_time }}</div>
+	<div class="home-container layout-pd ">
+		<!-- <button @click="notice">我是一个测试按钮</button> -->
+		<div class="Title">
+			<h1>报警通知</h1>
+		</div>
+		<div>
+			<el-row :gutter="15" class="home-card-one mb15">
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" v-for="(v, k) in state.homeOne" :key="k"
+					:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }">
+					<div class="home-card-item flex" style="margin-bottom: 20px;">
+						<div class=" flex w100" :class="`home-one-animation${k}`">
+							<div class="flex-auto text-box">
+								<span class="font30">{{ v.fire_type }}</span>
+								<div class="mt10">{{ v.confidence }}</div>
+								<div class="mt10">{{ v.record_time }}</div>
+							</div>
+							<div class="img-box flex">
+								<img style="width: 100%;" :src="v.pic_url" alt="" />
+							</div>
 						</div>
-						<img :src="v.pic_url" alt="" />
 					</div>
-				</div>
-			</el-col>
-		</el-row>
+				</el-col>
+			</el-row>
+		</div>
 		<el-row :gutter="15" class="home-card-two mb15">
 			<el-col :xs="24" :sm="14" :md="14" :lg="16" :xl="16">
 				<div class="home-card-item">
@@ -86,7 +85,16 @@ const state = reactive({
 		homeCharThree: null,
 		dispose: [null, '', undefined],
 	} as any,
-	homeOne: [],
+	homeOne: [{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false},
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
+
+	],
 	homeThree: [
 		{
 			icon: 'iconfont icon-yangan',
@@ -466,7 +474,7 @@ const initEchartsResize = () => {
 // 页面加载时
 onMounted(() => {
 	initEchartsResize();
-	accept();
+	//accept();
 });
 // 由于页面缓存原因，keep-alive
 onActivated(() => {
@@ -567,6 +575,24 @@ $homeNavLengh: 8;
 				height: 30px;
 			}
 		}
+	}
+	//报警通知
+	.Title{
+		// font-family: ;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+	//图片展示
+	.text-box{
+		font-size: 10px;
+		text-align: center;
+	}
+	.img-box{
+		width: auto;
+		height: auto;
+		overflow: hidden;
+		border-radius: 10px;
+		box-shadow: 1px 2px 2px rgba(0,0,0,0.4);
 	}
 
 	.home-card-one {

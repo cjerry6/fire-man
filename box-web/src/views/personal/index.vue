@@ -48,7 +48,7 @@
 
 			<!-- 消息通知 -->
 			<el-col :xs="24" :sm="8" class="pl15 personal-info">
-				<el-table :data="tableData" border style="width: 100%; height: 219px;">
+				<el-table :data="tableData.show" border style="width: 100%; height: 219px;">
 					<el-table-column type="selection" width="55" align="center" />
 					<el-table-column label="username" prop="username" show-overflow-tooltip align="center" />
 					<el-table-column label="user_type" prop="user_type" show-overflow-tooltip align="center" />
@@ -168,17 +168,30 @@ const usermange = async (username: string, user_type: string) => {
 	});
 };
 //用户列表数据
-let tableData = ref([
-]);
+const tableData = reactive({
+	show:[]
+});
 //用户信息展示
 const usershow = async () => {
 	personalApi.personalUsershow().then((res) => {
-		console.log(res);
-		tableData.value=res;
-		console.log('aaaa',tableData.value);
+		// for(const key in res){
+		// 	tableData.push(res[key]);
+		// }
+		console.log('12', tableData);
+		console.log(res)
+		tableData.show=res;
+		console.log('123', tableData);
 	});
+
 };
-console.log('bbb', tableData.value);
+console.log('qwe', tableData);
+
+//用户信息修改
+// const userchange = async (username: string, user_type: string) => {
+// 	personalApi.personalUserchange(username, user_type).then((res) => {
+// 		console.log(res);
+// 	});
+// 	};
 
 // 定义变量内容
 const storesTagsViewRoutes = useTagsViewRoutes();

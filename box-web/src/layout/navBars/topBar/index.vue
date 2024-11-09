@@ -99,7 +99,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 //顶栏颜色修改
 .layout-navbars-breadcrumb-index {
-	height: 50px;
+	height: 55px;
 	display: flex;
 	align-items: center;
 	// background: var(--next-bg-topBar);
