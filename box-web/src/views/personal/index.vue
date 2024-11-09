@@ -14,7 +14,8 @@
 						</div>
 						<div class="personal-user-right">
 							<el-row>
-								<el-col :span="24" class="personal-title mb18">欢迎来到 FewCode，简单编程，快速搭建管理系统，从这里开始！ </el-col>
+								<el-col :span="24" class="personal-title mb18">欢迎来到 FewCode，简单编程，快速搭建管理系统，从这里开始！
+								</el-col>
 								<el-col :span="24">
 									<el-row>
 										<el-col :xs="24" :sm="8" class="personal-item mb6">
@@ -47,21 +48,18 @@
 
 			<!-- 消息通知 -->
 			<el-col :xs="24" :sm="8" class="pl15 personal-info">
-				<el-card shadow="hover">
-					<template #header>
-						<span>消息通知</span>
-						<span class="personal-info-more">更多</span>
-					</template>
-					<div class="personal-info-box">
-						<ul class="personal-info-ul">
-							<li v-for="(v, k) in state.newsInfoList" :key="k" class="personal-info-li">
-								<a :href="v.link" target="_block" class="personal-info-li-title">{{ v.title }}</a>
-							</li>
-						</ul>
-					</div>
-				</el-card>
+				<el-table :data="tableData" border style="width: 100%; height: 219px;">
+					<el-table-column type="selection" width="55" align="center" />
+					<el-table-column label="username" prop="username" show-overflow-tooltip align="center" />
+					<el-table-column label="user_type" prop="user_type" show-overflow-tooltip align="center" />
+					<el-table-column label="删除" width="100" align="center">
+						<template #default="scope">
+							<el-button size="small" text type="primary">修改</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
 			</el-col>
-
+			<!-- 用户裂表 -->
 			<!-- 更新信息 -->
 			<el-col :span="24">
 				<el-card shadow="hover" class="mt15 personal-edit" header="更新信息">
@@ -70,12 +68,14 @@
 						<el-row :gutter="35">
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="昵称">
-									<el-input v-model="state.personalForm.name" placeholder="请输入昵称" clearable></el-input>
+									<el-input v-model="state.personalForm.name" placeholder="请输入昵称"
+										clearable></el-input>
 								</el-form-item>
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="性别">
-									<el-select v-model="state.personalForm.sex" placeholder="请选择性别" clearable class="w100">
+									<el-select v-model="state.personalForm.sex" placeholder="请选择性别" clearable
+										class="w100">
 										<el-option label="男" value="1"></el-option>
 										<el-option label="女" value="2"></el-option>
 									</el-select>
@@ -83,7 +83,8 @@
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="邮箱">
-									<el-input v-model="state.personalForm.email" placeholder="请输入邮箱" clearable></el-input>
+									<el-input v-model="state.personalForm.email" placeholder="请输入邮箱"
+										clearable></el-input>
 								</el-form-item>
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
@@ -150,11 +151,13 @@
 </template>
 
 <script setup lang="ts" name="personal">
-import { reactive, onMounted, ref, watch, onActivated } from 'vue';
+import { reactive, onMounted, ref, watch, onActivated, toRef } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useThemeConfig } from '/@/stores/themeConfig';
 import { useTagsViewRoutes } from '/@/stores/tagsViewRoutes';
 import { usePersonalApi } from '/@/api/personal';
+import { log } from 'console';
+import { RefSymbol } from '@vue/reactivity';
 
 // 网络请求
 const personalApi = usePersonalApi();
@@ -164,12 +167,18 @@ const usermange = async (username: string, user_type: string) => {
 		console.log(res);
 	});
 };
+//用户列表数据
+let tableData = ref([
+]);
 //用户信息展示
 const usershow = async () => {
 	personalApi.personalUsershow().then((res) => {
 		console.log(res);
+		tableData.value=res;
+		console.log('aaaa',tableData.value);
 	});
 };
+console.log('bbb', tableData.value);
 
 // 定义变量内容
 const storesTagsViewRoutes = useTagsViewRoutes();
