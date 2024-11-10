@@ -1,23 +1,31 @@
 <template>
-	<div class="home-container layout-pd ">
-		<!-- <button @click="notice">我是一个测试按钮</button> -->
+	<div class="home-container layout-pd">
 		<div class="Title">
 			<h1>报警通知</h1>
 		</div>
 		<div>
 			<el-row :gutter="15" class="home-card-one mb15">
-				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" v-for="(v, k) in state.homeOne" :key="k"
-					:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }">
-					<div class="home-card-item flex" style="margin-bottom: 20px;">
-						<div class=" flex w100" :class="`home-one-animation${k}`">
+				<el-col
+					:xs="24"
+					:sm="12"
+					:md="12"
+					:lg="6"
+					:xl="6"
+					v-for="(v, k) in state.homeOne"
+					:key="k"
+					:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }"
+				>
+					<div class="home-card-item flex" style="margin-bottom: 20px">
+						<div class="flex w100" :class="`home-one-animation${k}`">
 							<div class="flex-auto text-box">
 								<span class="font30">{{ v.fire_type }}</span>
 								<div class="mt10">{{ v.confidence }}</div>
 								<div class="mt10">{{ v.record_time }}</div>
 							</div>
 							<div class="img-box flex">
-								<img style="width: 100%;" :src="v.pic_url" alt="" />
+								<img style="width: 100%" :src="v.pic_url" alt="" />
 							</div>
+							<button @click="Delete(k)">我是一个测试按钮</button>
 						</div>
 					</div>
 				</el-col>
@@ -85,15 +93,63 @@ const state = reactive({
 		homeCharThree: null,
 		dispose: [null, '', undefined],
 	} as any,
-	homeOne: [{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false},
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-		{ fire_type: 'building', confidence: 0.8577578067779541, record_time: '2024-11-09T21:21:44.531', pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/3.jpg', status: false },
-
+	homeOne: [
+		{
+			fire_type: 'build132ing',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'buil321ding',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
+		{
+			fire_type: 'building',
+			confidence: 0.9112516045570374,
+			record_time: '2024-11-10T12:27:06.411',
+			pic_url: 'http://djtest8000.natapp1.cc/media/afterimg/5.jpg',
+			status: false,
+		},
 	],
 	homeThree: [
 		{
@@ -474,7 +530,7 @@ const initEchartsResize = () => {
 // 页面加载时
 onMounted(() => {
 	initEchartsResize();
-	//accept();
+	accept();
 });
 // 由于页面缓存原因，keep-alive
 onActivated(() => {
@@ -527,9 +583,17 @@ const notice = async () => {
 //接受
 const accept = () => {
 	panelApi.panelAccept().then((res) => {
-		state.homeOne = res;
-		panelStore.setFireShow(res);
+		//console.log(res.length);
+		if (res.length) {
+			state.homeOne = res;
+		}
+		//panelStore.setFireShow(res);
 	});
+};
+const Delete = (index: number) => {
+	if (index > -1) {
+		state.homeOne.splice(index, 1);
+	}
 };
 </script>
 
@@ -577,22 +641,22 @@ $homeNavLengh: 8;
 		}
 	}
 	//报警通知
-	.Title{
+	.Title {
 		// font-family: ;
 		font-size: 24px;
 		margin-bottom: 20px;
 	}
 	//图片展示
-	.text-box{
+	.text-box {
 		font-size: 10px;
 		text-align: center;
 	}
-	.img-box{
+	.img-box {
 		width: auto;
 		height: auto;
 		overflow: hidden;
 		border-radius: 10px;
-		box-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
 	}
 
 	.home-card-one {

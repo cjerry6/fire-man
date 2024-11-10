@@ -8,6 +8,7 @@
 			</el-col>
 			<el-col :span="8"></el-col>
 		</el-row>
+		<button @click="notice()">我是一个测试按钮</button>
 		<!-- 底部搜索框 -->
 		<el-row justify="center">
 			<el-col :span="8"></el-col>
@@ -45,6 +46,15 @@ const state = reactive({
 
 // 页面加载时
 onMounted(() => {});
+//网络请求
+import { usePanelApi } from '/@/api/alarm/panel';
+const panelApi = usePanelApi();
+//通知
+const notice = async () => {
+	panelApi.panelNotice().then((res) => {
+		console.log('1', res);
+	});
+};
 </script>
 <style scoped lang="scss">
 .el-row {

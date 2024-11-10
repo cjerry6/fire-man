@@ -1,6 +1,6 @@
 <template>
 	<div class="personal layout-pd">
-		<button @click="usershow()">我也是一个测试按钮</button>
+		<!-- <button @click="usershow()">我也是一个测试按钮</button> -->
 		<button @click="usermange('say', 'building')">一键让say编程building</button>
 		<el-row>
 			<!-- 个人信息 -->
@@ -14,8 +14,7 @@
 						</div>
 						<div class="personal-user-right">
 							<el-row>
-								<el-col :span="24" class="personal-title mb18">欢迎来到 FewCode，简单编程，快速搭建管理系统，从这里开始！
-								</el-col>
+								<el-col :span="24" class="personal-title mb18">欢迎来到 FewCode，简单编程，快速搭建管理系统，从这里开始！ </el-col>
 								<el-col :span="24">
 									<el-row>
 										<el-col :xs="24" :sm="8" class="personal-item mb6">
@@ -48,7 +47,7 @@
 
 			<!-- 消息通知 -->
 			<el-col :xs="24" :sm="8" class="pl15 personal-info">
-				<el-table :data="tableData.show" border style="width: 100%; height: 219px;">
+				<el-table :data="tableData.show" border style="width: 100%; height: 219px">
 					<el-table-column type="selection" width="55" align="center" />
 					<el-table-column label="username" prop="username" show-overflow-tooltip align="center" />
 					<el-table-column label="user_type" prop="user_type" show-overflow-tooltip align="center" />
@@ -68,14 +67,12 @@
 						<el-row :gutter="35">
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="昵称">
-									<el-input v-model="state.personalForm.name" placeholder="请输入昵称"
-										clearable></el-input>
+									<el-input v-model="state.personalForm.name" placeholder="请输入昵称" clearable></el-input>
 								</el-form-item>
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="性别">
-									<el-select v-model="state.personalForm.sex" placeholder="请选择性别" clearable
-										class="w100">
+									<el-select v-model="state.personalForm.sex" placeholder="请选择性别" clearable class="w100">
 										<el-option label="男" value="1"></el-option>
 										<el-option label="女" value="2"></el-option>
 									</el-select>
@@ -83,8 +80,7 @@
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
 								<el-form-item label="邮箱">
-									<el-input v-model="state.personalForm.email" placeholder="请输入邮箱"
-										clearable></el-input>
+									<el-input v-model="state.personalForm.email" placeholder="请输入邮箱" clearable></el-input>
 								</el-form-item>
 							</el-col>
 							<el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" class="mb20">
@@ -169,7 +165,7 @@ const usermange = async (username: string, user_type: string) => {
 };
 //用户列表数据
 const tableData = reactive({
-	show:[]
+	show: [],
 });
 //用户信息展示
 const usershow = async () => {
@@ -178,11 +174,10 @@ const usershow = async () => {
 		// 	tableData.push(res[key]);
 		// }
 		console.log('12', tableData);
-		console.log(res)
-		tableData.show=res;
+		console.log(res);
+		tableData.show = res;
 		console.log('123', tableData);
 	});
-
 };
 console.log('qwe', tableData);
 
@@ -229,7 +224,9 @@ const state = reactive({
 });
 
 // 页面加载时
-onMounted(() => {});
+onMounted(() => {
+	usershow();
+});
 // 由于页面缓存原因，keep-alive
 onActivated(() => {});
 // 监听 pinia 中的 tagsview 开启全屏变化，重新 resize 图表，防止不出现/大小不变等

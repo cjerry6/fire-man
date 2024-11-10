@@ -60,8 +60,8 @@
 			<el-table border :data="state.tableData.records" v-loading="state.tableData.loading" style="width: 100%">
 				<el-table-column type="selection" width="55" align="center" />
 				<el-table-column type="index" label="序号" width="60" align="center" />
-				<el-table-column label="子域名" prop="account" show-overflow-tooltip align="center" />
-				<el-table-column label="URL" prop="userName" show-overflow-tooltip align="center" />
+				<el-table-column label="confidence" prop="confidence" show-overflow-tooltip align="center" />
+				<el-table-column label="URL" prop="pic_url" show-overflow-tooltip align="center" />
 				<!-- 不用的先注掉 -->
 				<!-- <el-table-column label="用户昵称" prop="nickName" show-overflow-tooltip align="center" />
         <el-table-column label="用户邮箱" prop="fingerprint" show-overflow-tooltip align="center" />
@@ -81,8 +81,8 @@
             <span>{{ parseDateTime(scope.row.loginDate) }}</span>
           </template>
         </el-table-column> -->
-				<el-table-column label="网页标题" prop="title" show-overflow-tooltip align="center" />
-				<el-table-column label="指纹" prop="fingerprint" show-overflow-tooltip align="center" />
+				<el-table-column label="火灾类型" prop="fire_type" show-overflow-tooltip align="center" />
+				<el-table-column label="通知时间" prop="record_time" show-overflow-tooltip align="center" />
 				<el-table-column label="通知" width="100" align="center">
 					<template #default="scope">
 						<el-button v-if="auth('system:user:update')" size="small" text type="primary" @click="onOpenEdit('edit', scope.row)">修改</el-button>
@@ -224,6 +224,8 @@ const show = async () => {
 		// 	}
 		// }
 		console.log(res);
+		state.tableData.records = res;
+		console.log(state.tableData.records);
 		//state.tableData.records.values = res;
 	});
 };

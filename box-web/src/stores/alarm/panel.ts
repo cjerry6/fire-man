@@ -15,7 +15,7 @@ export const usePanelStore = defineStore('panel', {
 			// }
 
 			this.fireShow = data;
-			console.log(this.fireShow);
+			//console.log(this.fireShow);
 		},
 		deleteFireShow(id: number) {
 			this.fireShow.splice(id, 1);
