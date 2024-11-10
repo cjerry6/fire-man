@@ -5,10 +5,12 @@
 				<el-form :inline="true" ref="userSearchRef" :model="state.tableData.param.query" size="default">
 					<el-row>
 						<el-form-item label="子域名" class="ml20" size="default">
-							<el-input v-model="state.tableData.param.query.account" placeholder="请输入子域名" clearable style="max-width: 180px"></el-input>
+							<el-input v-model="state.tableData.param.query.account" placeholder="请输入子域名" clearable
+								style="max-width: 180px"></el-input>
 						</el-form-item>
 						<el-form-item label="URL" class="ml20" size="default">
-							<el-input v-model="state.tableData.param.query.userName" placeholder="请输入URL" clearable style="max-width: 180px"></el-input>
+							<el-input v-model="state.tableData.param.query.userName" placeholder="请输入URL" clearable
+								style="max-width: 180px"></el-input>
 						</el-form-item>
 						<!-- <el-form-item label="用户昵称" class="ml20" size="default">
               <el-input v-model="state.tableData.param.query.nickName" placeholder="请输入用户昵称" clearable
@@ -48,15 +50,15 @@
 						<el-button size="default" type="success" class="ml20" @click="onOpenAdd('add')">
 							<el-icon><ele-FolderAdd /></el-icon> 新增
 						</el-button>
+						<el-row :gutter="35">
+							<!-- 批量查询功能,效果未知 -->
+							<el-button size="default" type="success" plain class="ml30" @click="onOpenAdd('add')">
+								<el-icon><ele-FolderAdd /></el-icon> 批量查询
+							</el-button>
+						</el-row>
 					</el-row>
 				</el-form>
 			</div>
-			<el-row :gutter="35">
-				<!-- 批量查询功能,效果未知 -->
-				<el-button size="default" type="success" plain class="ml30" @click="onOpenAdd('add')">
-					<el-icon><ele-FolderAdd /></el-icon> 批量查询
-				</el-button>
-			</el-row>
 			<el-table border :data="state.tableData.records" v-loading="state.tableData.loading" style="width: 100%">
 				<el-table-column type="selection" width="55" align="center" />
 				<el-table-column type="index" label="序号" width="60" align="center" />
@@ -85,7 +87,8 @@
 				<el-table-column label="通知时间" prop="record_time" show-overflow-tooltip align="center" />
 				<el-table-column label="通知" width="100" align="center">
 					<template #default="scope">
-						<el-button v-if="auth('system:user:update')" size="small" text type="primary" @click="onOpenEdit('edit', scope.row)">修改</el-button>
+						<el-button v-if="auth('system:user:update')" size="small" text type="primary"
+							@click="onOpenEdit('edit', scope.row)">修改</el-button>
 					</template>
 				</el-table-column>
 				<el-table-column label="删除" width="100" align="center">
@@ -94,18 +97,10 @@
 					</template>
 				</el-table-column>
 			</el-table>
-			<el-pagination
-				@size-change="onHandleSizeChange"
-				@current-change="onHandleCurrentChange"
-				class="mt15"
-				:pager-count="5"
-				:page-sizes="[10, 20, 30]"
-				v-model:current-page="state.tableData.param.page.current"
-				background
-				v-model:page-size="state.tableData.param.page.size"
-				layout="total, sizes, prev, pager, next, jumper"
-				:total="state.tableData.total"
-			>
+			<el-pagination @size-change="onHandleSizeChange" @current-change="onHandleCurrentChange" class="mt15"
+				:pager-count="5" :page-sizes="[10, 20, 30]" v-model:current-page="state.tableData.param.page.current"
+				background v-model:page-size="state.tableData.param.page.size"
+				layout="total, sizes, prev, pager, next, jumper" :total="state.tableData.total">
 			</el-pagination>
 		</el-card>
 		<UserDialog ref="userDialogRef" @refresh="getTableData()" />

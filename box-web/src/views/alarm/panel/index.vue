@@ -5,16 +5,8 @@
 		</div>
 		<div>
 			<el-row :gutter="15" class="home-card-one mb15">
-				<el-col
-					:xs="24"
-					:sm="12"
-					:md="12"
-					:lg="6"
-					:xl="6"
-					v-for="(v, k) in state.homeOne"
-					:key="k"
-					:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }"
-				>
+				<el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" v-for="(v, k) in state.homeOne" :key="k"
+					:class="{ 'home-media home-media-lg': k > 1, 'home-media-sm': k === 1 }">
 					<div class="home-card-item flex" style="margin-bottom: 20px">
 						<div class="flex w100" :class="`home-one-animation${k}`">
 							<div class="flex-auto text-box">
@@ -25,7 +17,14 @@
 							<div class="img-box flex">
 								<img style="width: 100%" :src="v.pic_url" alt="" />
 							</div>
-							<button @click="Delete(k)">我是一个测试按钮</button>
+							<!-- 退出按钮 -->
+							<div class="parent-element">
+								<el-button class="close-button" type="text" @click="Delete(k)">
+									<el-icon>
+										<Close />
+									</el-icon>
+								</el-button>
+							</div>
 						</div>
 					</div>
 				</el-col>
@@ -72,6 +71,7 @@
 </template>
 
 <script setup lang="ts" name="home">
+import{Close} from '@element-plus/icons-vue';
 import { reactive, onMounted, ref, watch, nextTick, onActivated, markRaw } from 'vue';
 import * as echarts from 'echarts';
 import { storeToRefs } from 'pinia';
@@ -598,6 +598,28 @@ const Delete = (index: number) => {
 </script>
 
 <style scoped lang="scss">
+//退出按钮
+.parent-element {
+	position: relative;
+	/* 确保父元素是相对定位的 */
+}
+
+.close-button {
+	position: absolute;
+	/* 绝对定位用于定位按钮 */
+	top: -30px;
+	/* 距离顶部0 */
+	right: -20px;
+	/* 距离右侧0 */
+	padding: 0;
+	/* 移除内边距 */
+	border: none;
+	/* 移除边框 */
+	background-color: transparent;
+	/* 透明背景 */
+	cursor: pointer;
+	/* 指针样式 */
+}
 $homeNavLengh: 8;
 
 .home-container {
@@ -652,12 +674,17 @@ $homeNavLengh: 8;
 		text-align: center;
 	}
 	.img-box {
-		width: auto;
+		width: 40%;
 		height: auto;
 		overflow: hidden;
-		border-radius: 10px;
-		box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+		border-radius: 4px;
+        transition: box-shadow 0.2s ease-in-out;
+	/* 添加过渡效果 */
 	}
+		.img-box:hover {
+			box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+			/* 鼠标划过时的阴影效果 */
+		}
 
 	.home-card-one {
 		@for $i from 0 through 3 {
