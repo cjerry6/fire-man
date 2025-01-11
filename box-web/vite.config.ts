@@ -29,7 +29,8 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
 			hmr: true,
 			proxy: {
 				'/api': {
-					target: 'http://djtest8000.natapp1.cc',
+					// target: 'http://djtest8000.natapp1.cc',
+					target: 'http://68dqau.natappfree.cc',
 					ws: true,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/manageApi/, ''),
